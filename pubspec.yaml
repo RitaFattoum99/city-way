@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_bloc: 8.1.3
+  flutter_bloc: ^8.1.3
 
   cupertino_icons: ^1.0.2
   equatable: 2.0.5
@@ -31,17 +31,3 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/image/
-    
-  fonts:
-    - family: Cairo
-      fonts:
-        - asset: assets/font/Cairo-Light.ttf
-          weight: 300
-        - asset: assets/font/Cairo-Regular.otf
-          weight: 400
-        - asset: assets/font/Cairo-SemiBold.ttf
-          weight: 600
-        - asset: assets/font/Cairo-Bold.ttf
-          weight: 700
