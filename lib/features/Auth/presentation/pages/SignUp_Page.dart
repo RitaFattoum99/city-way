@@ -16,7 +16,8 @@ class SignUpPage extends StatelessWidget {
   }
   
     Widget _buildBody(){
-      return Positioned(
+      return Padding(
+        padding: const EdgeInsets.all(10),
         child: BlocConsumer<SignupBloc, SignupState>(
           listener: (context, State){
             if(State is SuccessState){
@@ -27,9 +28,10 @@ class SignUpPage extends StatelessWidget {
             }
           },
           builder: (context, State){
-            if(State is LoadingState){
-              return LoadingWidget();
-            }
+            //if(State is LoadingState){
+              //print("loading");
+              //return LoadingWidget();
+           // }
             return FormSignUp();
           }, 
           ),

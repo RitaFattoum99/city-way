@@ -4,20 +4,28 @@ import 'package:flutter/material.dart';
 class Btn extends StatelessWidget {
   String text;
   Function onPressed;
-   Btn({required this.text, required this.onPressed,super.key});
+  Color color;
+  Btn(
+      {required this.text,
+      required this.onPressed,
+      required this.color,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container( 
+    return Container(
       width: size.width,
       child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(color),
+        ),
         onPressed: onPressed(),
         child: Text(
-          text
+          text,
+          style: TextStyle(color: AppColorManger.white),
         ),
-        ),
-        color: AppColorManger.mainAppColor,
+      ),
     );
   }
 }

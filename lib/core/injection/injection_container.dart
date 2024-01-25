@@ -1,3 +1,7 @@
+import 'package:city_way/features/Auth/data/repositories/datasource/local_data_source.dart';
+import 'package:city_way/features/Auth/data/repositories/datasource/remote_data_source.dart';
+import 'package:city_way/features/Auth/data/repositories/user_repository_implement.dart';
+import 'package:city_way/features/Auth/domain/repositories/user_repository.dart';
 import 'package:city_way/features/Auth/domain/usecases/signin_usecase.dart';
 import 'package:city_way/features/Auth/domain/usecases/signup_usecase.dart';
 import 'package:city_way/features/Auth/presentation/bloc/signin_bloc/signin_bloc.dart';
@@ -22,10 +26,12 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SignInUseCase(userRepository: sl()));
 
   // Reposetories
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImp(remoteDataSource :sl(), localDataSource: sl()));
 
+  // Datasources
+  sl.registerLazySingleton<RemoteDataSource>( () => RemoteDataSourceImpl());
+  sl.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
 
-
-  // DataSources
   // Remote
   // Local
 
