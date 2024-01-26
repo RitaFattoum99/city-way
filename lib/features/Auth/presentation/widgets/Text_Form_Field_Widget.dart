@@ -43,7 +43,8 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
               filled: true,
               fillColor: AppColorManger.fillFieldColor,
               prefixIcon: Icon(widget.icon),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+              borderSide:BorderSide(color: AppColorManger.borderFieldColor)),
               suffixIcon: isPasswordType
                   ? IconButton(
                       icon: Icon(

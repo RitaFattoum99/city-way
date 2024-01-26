@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:city_way/features/Auth/presentation/pages/SignUp/SignUp_Page.dart';
+import 'package:city_way/features/enter_location.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const SignUpPage()),
+        MaterialPageRoute(builder: (_) => const MapSample()),
       );
     });
   }

@@ -6,6 +6,8 @@ class AppColorManger {
   static const Color secondaryAppColor = Color(0xff03395A);
   static const Color greyAppColor = Color(0xFF7f7f7f);
   static const Color fillFieldColor = Color(0xFFF8F7F7);
+  static const Color borderFieldColor = Color(0xFFD0CCC6);
+
   static const Color black = Colors.black;
   static const Color white = Colors.white;
 
