@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Btn extends StatelessWidget {
   String text;
-  Function onPressed;
+  VoidCallback  onPressed;
   Color color;
   Btn(
       {required this.text,
@@ -14,16 +14,16 @@ class Btn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       width: size.width,
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(color),
         ),
-        onPressed: onPressed(),
+        onPressed: onPressed,
         child: Text(
           text,
-          style: TextStyle(color: AppColorManger.white),
+          style: const TextStyle(color: AppColorManger.white),
         ),
       ),
     );

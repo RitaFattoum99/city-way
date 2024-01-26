@@ -10,16 +10,16 @@ class TextFormFieldWidget extends StatefulWidget {
   const TextFormFieldWidget({
     required this.controller,
     required this.name,
-    required this.icon,
-    super.key, required this.type,
-  });
+    super.key, required this.type, required this.icon,
+  }
+  );
 
   @override
   State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
 }
 
 class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
-  bool _obscureText = true;
+  final bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         children: [
           Text(
             widget.name,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           TextFormField(
             controller: widget.controller,
@@ -51,9 +51,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                         color: Colors.grey,
                       ),
                       onPressed: () {
-                        setState(() {
-                          _obscureText = !_obscureText;
-                        });
+                        
                       },
                     )
                   : null,

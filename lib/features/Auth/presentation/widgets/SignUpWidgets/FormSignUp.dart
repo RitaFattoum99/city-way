@@ -1,16 +1,18 @@
 import 'package:city_way/core/resource/color_manger.dart';
 import 'package:city_way/core/util/btnInfiniteWidth.dart';
 import 'package:city_way/core/util/enum.dart';
+import 'package:city_way/features/Auth/presentation/pages/SignIn/SignIn_Page.dart';
+import 'package:city_way/features/Auth/presentation/pages/SignUp/Confirm_Page.dart';
 import 'package:city_way/features/Auth/presentation/widgets/Text_Form_Field_Widget.dart';
 import 'package:flutter/material.dart';
 
 class FormSignUp extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmController = TextEditingController();
   FormSignUp({super.key});
 
   @override
@@ -18,50 +20,62 @@ class FormSignUp extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset('assets/image/logo.png'),
-        Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextFormFieldWidget(
-                controller: _nameController,
-                name: 'User Name',
-                icon: Icons.person,
-                type: FieldType.text,
-              ),
-              TextFormFieldWidget(
-                controller: _emailController,
-                name: 'E-mail',
-                icon: Icons.email,
-                type: FieldType.text,
-              ),
-              TextFormFieldWidget(
-                controller: _phoneController,
-                name: 'Phone Number',
-                icon: Icons.phone,
-                type: FieldType.number,
-              ),
-              TextFormFieldWidget(
-                controller: _passwordController,
-                name: 'password',
-                icon: Icons.lock,
-                type: FieldType.password,
-              ),
-              TextFormFieldWidget(
-                controller: _confirmController,
-                name: 'Confirm Password',
-                icon: Icons.lock,
-                type: FieldType.password,
-              ),
-            ],
+        Padding(
+          padding: const EdgeInsets.only(top: 40),
+          child: Image.asset('assets/image/logo.png'),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 50),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextFormFieldWidget(
+                  controller: _nameController,
+                  name: 'User Name',
+                  icon: Icons.person,
+                  type: FieldType.text,
+                ),
+                TextFormFieldWidget(
+                  controller: _emailController,
+                  name: 'E-mail',
+                  icon: Icons.email,
+                  type: FieldType.text,
+                ),
+                TextFormFieldWidget(
+                  controller: _phoneController,
+                  name: 'Phone Number',
+                  icon: Icons.phone,
+                  type: FieldType.number,
+                ),
+                TextFormFieldWidget(
+                  controller: _passwordController,
+                  name: 'password',
+                  icon: Icons.lock,
+                  type: FieldType.password,
+                ),
+                TextFormFieldWidget(
+                  controller: _confirmController,
+                  name: 'Confirm Password',
+                  icon: Icons.lock,
+                  type: FieldType.password,
+                ),
+              ],
+            ),
           ),
         ),
         Btn(
-          onPressed: signUp,
+          onPressed: (){
+            Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ConfirmPage(),
+                  ),
+            );
+          },
           text: 'Sign up',
           color: AppColorManger.mainAppColor,
         ),
@@ -71,10 +85,17 @@ class FormSignUp extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Already have an account?'),
+            const Text('Already have an account?'),
             GestureDetector(
-              onTap: () {},
-              child: Text(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignInPage(),
+                  ),
+                );
+              },
+              child: const Text(
                 'sign in',
                 style: TextStyle(
                   fontSize: 16,
@@ -91,3 +112,12 @@ class FormSignUp extends StatelessWidget {
 }
 
 void signUp() {}
+
+void _onPressed(context){
+      Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignInPage(),
+                  ),
+                );
+    }

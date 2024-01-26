@@ -1,5 +1,5 @@
-import 'package:city_way/features/Auth/data/repositories/datasource/local_data_source.dart';
-import 'package:city_way/features/Auth/data/repositories/datasource/remote_data_source.dart';
+import 'package:city_way/features/Auth/data/datasource/local_data_source.dart';
+import 'package:city_way/features/Auth/data/datasource/remote_data_source.dart';
 import 'package:city_way/features/Auth/data/repositories/user_repository_implement.dart';
 import 'package:city_way/features/Auth/domain/repositories/user_repository.dart';
 import 'package:city_way/features/Auth/domain/usecases/signin_usecase.dart';

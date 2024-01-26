@@ -22,7 +22,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
                   emit(ErrorState(message: mapFailureToMessageInfo(failure)));
                 },
                 (user) {
-                  emit(SuccessState(message: SIGN_IN_SUCCESS_MESSAGE));
+                  emit(const SuccessState(message: SIGN_IN_SUCCESS_MESSAGE));
                 },
         );
   }});
