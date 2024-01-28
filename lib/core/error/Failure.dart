@@ -21,3 +21,14 @@ class WrongDataFailure extends Failure{
   @override
   List<Object?> get props => [];
 }
+/*
+class WeakPasswordFailure extends Failure{
+  @override
+  List<Object?> get props => [];
+}
+
+class ExistsAccountFailure extends Failure{
+  @override
+  List<Object?> get props => [];
+}
+*/

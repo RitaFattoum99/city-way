@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
-  final int id;
-  final String name;
+  final int ?id;
+  final String ?name;
   final String email;
-  final String phone;
+  final String ?phone;
   final String password;
-  final String confirmPassword;
+  final String ?confirmPassword;
 
   const User({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     required this.email,
-    required this.phone,
+    this.phone,
     required this.password,
-    required this.confirmPassword,
+    this.confirmPassword,
   });
 
   @override

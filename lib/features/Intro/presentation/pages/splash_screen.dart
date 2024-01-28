@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:city_way/features/Auth/presentation/pages/SignUp/SignUp_Page.dart';
 import 'package:city_way/features/enter_location.dart';
 import 'package:flutter/material.dart';
 

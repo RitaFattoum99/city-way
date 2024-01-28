@@ -1,10 +1,12 @@
 import 'package:city_way/core/resource/color_manger.dart';
 import 'package:city_way/core/util/btnInfiniteWidth.dart';
 import 'package:city_way/core/util/enum.dart';
+import 'package:city_way/features/Auth/domain/entities/user.dart' as CityUser;
+import 'package:city_way/features/Auth/presentation/bloc/signup_bloc/signup_bloc.dart';
 import 'package:city_way/features/Auth/presentation/pages/SignIn/SignIn_Page.dart';
-import 'package:city_way/features/Auth/presentation/pages/SignUp/Confirm_Page.dart';
 import 'package:city_way/features/Auth/presentation/widgets/Text_Form_Field_Widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FormSignUp extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -17,7 +19,23 @@ class FormSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final size = MediaQuery.of(context).size;
+      void signUp(){
+    final isValid = _formKey.currentState!.validate();
+
+    if (isValid) {
+      final user = CityUser.User(
+            name: _nameController.text,
+            email: _emailController.text,
+            phone: _phoneController.text,
+            password: _passwordController.text,
+            confirmPassword: _confirmController.text);
+   
+         BlocProvider.of<SignupBloc>(context).add(SignUpEvent(
+        user: user));
+    }
+  }
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -68,13 +86,15 @@ class FormSignUp extends StatelessWidget {
           ),
         ),
         Btn(
-          onPressed: (){
-            Navigator.push(
+          onPressed: () async {
+            //signUp();
+            /* Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ConfirmPage(),
                   ),
             );
+          */
           },
           text: 'Sign up',
           color: AppColorManger.mainAppColor,
@@ -110,14 +130,3 @@ class FormSignUp extends StatelessWidget {
     );
   }
 }
-
-void signUp() {}
-
-void _onPressed(context){
-      Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignInPage(),
-                  ),
-                );
-    }

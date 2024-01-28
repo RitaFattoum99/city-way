@@ -1,20 +1,52 @@
 import 'package:city_way/core/resource/color_manger.dart';
 import 'package:city_way/core/util/btnInfiniteWidth.dart';
 import 'package:city_way/core/util/enum.dart';
+import 'package:city_way/features/Auth/domain/entities/user.dart' as CityUser;
+import 'package:city_way/features/Auth/presentation/bloc/signup_bloc/signup_bloc.dart';
 import 'package:city_way/features/Auth/presentation/pages/SignUp/SignUp_Page.dart';
 import 'package:city_way/features/Auth/presentation/widgets/Text_Form_Field_Widget.dart';
 import 'package:city_way/features/Auth/presentation/widgets/circle_logo_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FormSignIn extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   FormSignIn({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    void signIn() async {
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          print('Wrong password provided for that user.');
+        }
+      }
+/*
+    final isValid = _formKey.currentState!.validate();
+
+    if (isValid) {
+      final user = CityUser.User(
+            email: _emailController.text,
+            password: _passwordController.text,
+            );
+   
+         BlocProvider.of<SignupBloc>(context).add(SignUpEvent(
+        user: user));
+    }
+    */
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -31,8 +63,8 @@ class FormSignIn extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormFieldWidget(
-                  controller: _nameController,
-                  name: 'User Name',
+                  controller: _emailController,
+                  name: 'E-mail',
                   icon: Icons.person,
                   type: FieldType.text,
                 ),
@@ -100,7 +132,5 @@ class FormSignIn extends StatelessWidget {
     );
   }
 }
-
-void signIn() {}
 
 void QuickRequest() {}

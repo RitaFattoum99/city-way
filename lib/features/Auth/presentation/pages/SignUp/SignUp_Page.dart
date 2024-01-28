@@ -1,5 +1,6 @@
 import 'package:city_way/core/util/snackbar_message.dart';
 import 'package:city_way/features/Auth/presentation/bloc/signup_bloc/signup_bloc.dart';
+import 'package:city_way/features/Auth/presentation/pages/SignUp/Confirm_Page.dart';
 import 'package:city_way/features/Auth/presentation/widgets/SignUpWidgets/FormSignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +25,9 @@ class SignUpPage extends StatelessWidget {
                 listener: (context, State){
                   if(State is SuccessState){
                     SnackBarMessage().showSuccessSnackBar(message: State.message, context: context);
+                    Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (_) => ConfirmPage()),
+                    (route) => false);
                   }
                   else if (State is ErrorState){
                     SnackBarMessage().showErrorSnackBar(message: State.message, context: context);

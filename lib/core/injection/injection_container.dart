@@ -6,6 +6,7 @@ import 'package:city_way/features/Auth/domain/usecases/signin_usecase.dart';
 import 'package:city_way/features/Auth/domain/usecases/signup_usecase.dart';
 import 'package:city_way/features/Auth/presentation/bloc/signin_bloc/signin_bloc.dart';
 import 'package:city_way/features/Auth/presentation/bloc/signup_bloc/signup_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 
 //Get It Global Instance
@@ -26,7 +27,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SignInUseCase(userRepository: sl()));
 
   // Reposetories
-  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImp(remoteDataSource :sl(), localDataSource: sl()));
+  //sl.registerLazySingleton<UserRepository>(() => UserRepositoryImp(remoteDataSource :sl(), localDataSource: sl()));
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImp(firebaseAuth: sl()));
 
   // Datasources
   sl.registerLazySingleton<RemoteDataSource>( () => RemoteDataSourceImpl());
@@ -39,5 +41,5 @@ Future<void> init() async {
   //! Core
 
   //! External
-
+  sl.registerLazySingleton(() => FirebaseAuth.instance);
 }

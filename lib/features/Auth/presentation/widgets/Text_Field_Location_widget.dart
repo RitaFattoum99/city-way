@@ -21,13 +21,13 @@ class TextFieldLocationWidget extends StatelessWidget {
         maxLines: big ? 3 : 1,
         maxLength: 3,
         controller: controller,
-        validator: (val) => val!.isEmpty ? "${name} Can't be empty" : null,
+        validator: (val) => val!.isEmpty ? "$name Can't be empty" : null,
         decoration: InputDecoration(
           hintText: name,
           filled: true,
           fillColor: AppColorManger.fillFieldColor,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
-                  borderSide:BorderSide(color: AppColorManger.borderFieldColor)),
+                  borderSide:const BorderSide(color: AppColorManger.borderFieldColor)),
         ),
       ),
     );

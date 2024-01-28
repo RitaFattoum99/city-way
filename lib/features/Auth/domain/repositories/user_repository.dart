@@ -5,5 +5,5 @@ import 'package:dartz/dartz.dart';
 abstract class UserRepository{
   Future<Either<Failure,User>> signUp(User user);
   Future<Either<Failure,User>> signIn(User user);
- // Future<Either<Failure,Unit>> logout();
+  Future<Either<Failure,Unit>> logout();
 }

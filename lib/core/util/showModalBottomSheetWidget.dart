@@ -1,16 +1,14 @@
 import 'package:city_way/core/resource/color_manger.dart';
 import 'package:city_way/core/util/btnInfiniteWidth.dart';
-import 'package:city_way/core/util/enum.dart';
 import 'package:city_way/features/Auth/presentation/pages/SignIn/SignIn_Page.dart';
 import 'package:city_way/features/Auth/presentation/widgets/Text_Field_Location_widget.dart';
-import 'package:city_way/features/Auth/presentation/widgets/Text_Form_Field_Widget.dart';
 import 'package:flutter/material.dart';
 
 class ShowModalBottomSheet extends StatelessWidget {
-  TextEditingController _loactionController = TextEditingController();
-  TextEditingController _streeController = TextEditingController();
-  TextEditingController _floorController = TextEditingController();
-  TextEditingController _detialscontroller = TextEditingController();
+  final TextEditingController _loactionController = TextEditingController();
+  final TextEditingController _streeController = TextEditingController();
+  final TextEditingController _floorController = TextEditingController();
+  final TextEditingController _detialscontroller = TextEditingController();
   ShowModalBottomSheet({super.key});
 
   @override
@@ -35,8 +33,8 @@ class ShowModalBottomSheet extends StatelessWidget {
             name: "Floor",
             big: false,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8,bottom: 25),
+          const Padding(
+            padding: EdgeInsets.only(left: 8,bottom: 25),
             child: Text("Property type:",
                 style: TextStyle(fontWeight: FontWeight.bold)),
           ),
@@ -55,15 +53,15 @@ class ShowModalBottomSheet extends StatelessWidget {
                             color: Colors.black.withOpacity(0.2),
                             spreadRadius: 2,
                             blurRadius: 5,
-                            offset: Offset(0, 3), // تحديد اتجاه الظل
+                            offset: const Offset(0, 3), // تحديد اتجاه الظل
                           ),
                         ],
                         borderRadius: BorderRadius.circular(10)),
-                    child: Icon(Icons.home_outlined,
+                    child: const Icon(Icons.home_outlined,
                         color: AppColorManger.mainAppColor, size: 50),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:10),
+                  const Padding(
+                    padding: EdgeInsets.only(top:10),
                     child: Text("House"),
                   ),
                 ],
@@ -81,15 +79,15 @@ class ShowModalBottomSheet extends StatelessWidget {
                             color: Colors.black.withOpacity(0.2),
                             spreadRadius: 2,
                             blurRadius: 5,
-                            offset: Offset(0, 3), // تحديد اتجاه الظل
+                            offset: const Offset(0, 3), // تحديد اتجاه الظل
                           ),
                         ],
                         borderRadius: BorderRadius.circular(10)),
-                    child: Icon(Icons.villa_outlined,
+                    child: const Icon(Icons.villa_outlined,
                         color: AppColorManger.white, size: 50),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:10),
+                  const Padding(
+                    padding: EdgeInsets.only(top:10),
                     child: Text("Villa"),
                   ),
                 ],

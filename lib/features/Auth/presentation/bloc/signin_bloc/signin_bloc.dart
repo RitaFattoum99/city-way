@@ -13,29 +13,34 @@ part 'signin_state.dart';
 class SigninBloc extends Bloc<SigninEvent, SigninState> {
   final SignInUseCase signInUseCase;
   SigninBloc({required this.signInUseCase}) : super(SigninInitial()) {
-    on<SigninEvent>((event, emit) async{
-      if (event is SignInEvent){
-        emit(LoadingState());
-
+    on<SigninEvent>((event, emit) async {
+      if (event is SignInEvent) {
+        //emit(LoadingState());
         final user = await signInUseCase(event.user);
         user.fold(
-              (failure){
+          (failure) {
             emit(ErrorState(message: mapFailureToMessageInfo(failure)));
           },
-              (_) {
+          (_) {
             emit(const SuccessState(message: SIGN_IN_SUCCESS_MESSAGE));
           },
         );
       }
     });
   }
-  
+
   String mapFailureToMessageInfo(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
         return serverFailureMessage;
       case OfflineFailure:
         return offlineFailureMessage;
+      
+      /*case WeakPasswordFailure:
+        return weakPasswordFailureMessage;
+      case ExistsAccountFailure:
+        return accountExistsFailureMessage;
+      */
       default:
         return "An Unexpected Wrong, Please try again later!.";
     }

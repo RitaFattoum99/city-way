@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "908250767863",
+    "project_id": "city-way-eb45b",
+    "storage_bucket": "city-way-eb45b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908250767863:android:f616e54bb3498512594ef2",
+        "android_client_info": {
+          "package_name": "com.cityway.city_way"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdolIVjlMVEBtBvYULzCclVbi51hGTZW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
